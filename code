@@ -1,0 +1,27 @@
+class Solution(object):
+    def convert(self, s, numRows):
+        """
+        :type s: str
+        :type numRows: int
+        :rtype: str
+        """
+        if numRows==1 or numRows>=len(s):
+            return s
+        
+
+        rows=[""]*numRows
+        currrow=0
+        goingdown=False
+
+
+        for ch in s:
+            rows[currrow]+=ch
+
+            if currrow==0 or currrow==numRows-1:
+                goingdown=not goingdown
+
+            currrow+=1 if goingdown else -1
+
+        return "".join(rows)
+
+      
